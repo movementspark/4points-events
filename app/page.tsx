@@ -6,9 +6,9 @@ export default function EventsPage() {
         <a href="https://4pointshealth.janeapp.com/" style={{color:'#c8a951', textDecoration:'none'}}>Book Today →</a>
       </div>
 
-      <nav style={{background:'white', borderBottom:'1px solid #e8e4df', padding:'0 40px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'70px', position:'sticky', top:0, zIndex:100, boxShadow:'0 2px 12px rgba(0,0,0,0.07)'}}>
+      <nav style={{background:'white', borderBottom:'1px solid #e8e4df', padding:'0 40px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'90px', position:'sticky', top:0, zIndex:100, boxShadow:'0 2px 12px rgba(0,0,0,0.07)'}}>
         <a href="https://www.4pointshealth.com" style={{display:'flex', alignItems:'center', textDecoration:'none'}}>
-          <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'52px', width:'auto'}} />
+          <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'80px', width:'auto'}} />
         </a>
         <div style={{display:'flex', gap:'10px'}}>
           <a href="tel:7807055775" style={{background:'none', border:'2px solid #1a2744', color:'#1a2744', padding:'8px 16px', fontSize:'12px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', textDecoration:'none'}}>Call Now</a>
