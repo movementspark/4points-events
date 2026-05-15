@@ -1,80 +1,115 @@
 export default function EventsPage() {
   return (
     <>
-      <div style={{background:'#1a2744', color:'white', textAlign:'center', padding:'8px 20px', fontSize:'12px', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase'}}>
-        Voted Top Choice Wellness Centre 2026 &nbsp;
-        <a href="https://4pointshealth.janeapp.com/" style={{color:'#c8a951', textDecoration:'none'}}>Book Today →</a>
+      {/* Announcement bar */}
+      <div style={{background:'#1a2744', color:'white', textAlign:'center', padding:'10px 20px', fontSize:'13px', fontWeight:500, display:'flex', alignItems:'center', justifyContent:'center', gap:'20px'}}>
+        Voted Top Choice Wellness Centre 2026
+        <a href="https://4pointshealth.janeapp.com/" style={{color:'white', textDecoration:'none', border:'1px solid rgba(255,255,255,0.55)', borderRadius:'20px', padding:'4px 18px', fontSize:'12px', fontWeight:600}}>Book Today</a>
       </div>
 
-      <nav style={{background:'white', borderBottom:'1px solid #e8e4df', padding:'0 40px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'90px', position:'sticky', top:0, zIndex:100, boxShadow:'0 2px 12px rgba(0,0,0,0.07)'}}>
+      {/* Nav */}
+      <nav style={{background:'white', borderBottom:'1px solid #e8e4df', padding:'0 48px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'90px', position:'sticky', top:0, zIndex:100, boxShadow:'0 2px 10px rgba(0,0,0,0.06)'}}>
         <a href="https://www.4pointshealth.com" style={{display:'flex', alignItems:'center', textDecoration:'none'}}>
           <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'80px', width:'auto'}} />
         </a>
-        <div style={{display:'flex', gap:'10px'}}>
-          <a href="tel:7807055775" style={{background:'none', border:'2px solid #1a2744', color:'#1a2744', padding:'8px 16px', fontSize:'12px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', textDecoration:'none'}}>Call Now</a>
-          <a href="https://4pointshealth.janeapp.com/" style={{background:'#2a7f7f', border:'2px solid #2a7f7f', color:'white', padding:'8px 20px', fontSize:'12px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', textDecoration:'none'}}>Book Now</a>
+        <div style={{display:'flex', alignItems:'center', gap:'32px'}}>
+          <a href="https://www.4pointshealth.com" style={{color:'#4a4540', fontSize:'14px', textDecoration:'none', fontWeight:500}}>Home</a>
+          <a href="https://www.4pointshealth.com/wellness-services" style={{color:'#4a4540', fontSize:'14px', textDecoration:'none', fontWeight:500}}>Treatments</a>
+          <a href="https://www.4pointshealth.com/our-story" style={{color:'#4a4540', fontSize:'14px', textDecoration:'none', fontWeight:500}}>About Us</a>
+          <a href="https://www.4pointshealth.com/contact-3" style={{color:'#4a4540', fontSize:'14px', textDecoration:'none', fontWeight:500}}>Contact</a>
+          <a href="tel:7807055775" style={{background:'#1a2744', color:'white', padding:'10px 26px', fontSize:'13px', fontWeight:700, letterSpacing:'0.5px', textDecoration:'none', borderRadius:'30px'}}>☎ CALL NOW</a>
         </div>
       </nav>
 
-      <div style={{background:'linear-gradient(135deg, #1a2744 0%, #243560 60%, #1f4a6b 100%)', color:'white', padding:'64px 40px 52px', textAlign:'center'}}>
-        <div style={{fontSize:'11px', letterSpacing:'3px', textTransform:'uppercase', color:'#c8a951', fontWeight:700, marginBottom:'16px'}}>4 Points Community</div>
-        <h1 style={{fontSize:'clamp(32px, 5vw, 52px)', fontWeight:600, lineHeight:1.15, marginBottom:'16px'}}>Classes, Workshops & Events</h1>
-        <p style={{maxWidth:'620px', margin:'0 auto', fontSize:'15px', fontWeight:300, lineHeight:1.7, color:'rgba(255,255,255,0.82)'}}>Move better, feel stronger, and connect deeper. From weekly fitness classes to specialized wellness workshops — find your next experience with the 4 Points community.</p>
+      {/* Hero — split layout */}
+      <div style={{display:'grid', gridTemplateColumns:'5fr 7fr', minHeight:'380px'}}>
+        <div style={{background:'linear-gradient(135deg, #1a2744 0%, #243560 100%)', display:'flex', alignItems:'center', justifyContent:'center', padding:'40px'}}>
+          <img src="/4Pointslogo.jpg" alt="" style={{width:'220px', filter:'brightness(0) invert(1)', opacity:0.15}} />
+        </div>
+        <div style={{background:'white', padding:'64px 56px', display:'flex', flexDirection:'column', justifyContent:'center'}}>
+          <h1 style={{fontSize:'clamp(34px, 4vw, 54px)', fontWeight:700, color:'#1a1a1a', lineHeight:1.15, marginBottom:'20px'}}>4 Points Community Events</h1>
+          <p style={{fontSize:'16px', color:'#5a5550', lineHeight:1.85, fontWeight:300, maxWidth:'520px'}}>
+            "Welcome to the 4 Points Community. Our workshops and classes are designed to help you move better, feel stronger, and connect deeper. Browse our upcoming events below and join us in-studio!"
+          </p>
+        </div>
       </div>
 
-      <div style={{maxWidth:'1100px', margin:'0 auto', padding:'52px 40px 80px'}}>
-        
-        <div style={{marginBottom:'32px'}}>
-          <div style={{fontSize:'11px', letterSpacing:'3px', textTransform:'uppercase', color:'#2a7f7f', fontWeight:700, marginBottom:'8px'}}>Ongoing · Weekly</div>
-          <h2 style={{fontSize:'30px', fontWeight:600, color:'#1a2744', marginBottom:'6px'}}>Weekly Movement Classes</h2>
-          <p style={{color:'#9a9590', fontSize:'14px', fontWeight:300, lineHeight:1.6}}>Expert-led sessions for all fitness levels. From high-energy suspension training to restorative midday stretches.</p>
-        </div>
+      {/* Main content on warm background */}
+      <div style={{background:'#f4e8e3'}}>
 
-        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'24px', marginBottom:'56px'}}>
-          {[
-            { title:'TRX Group Class', day:'Thursdays · 5:30 PM', desc:'Build your strongest, most resilient body using suspension training. Master six foundational movements with Naissa.', url:'https://www.4pointshealth.com/event-details/trx-group-class-2026-05-21-17-30', cta:'Details', bg:'linear-gradient(135deg, #1a4a6b, #2a7f7f)' },
-            { title:'TRX Group Class — Fridays', day:'Fridays · 9:00 AM', desc:'Progressive suspension training on Friday mornings. A great way to wrap up your training week strong with Naissa.', url:'https://www.4pointshealth.com/event-details/trx-group-class-fridays-2026-05-22-09-00-1', cta:'Sign Up', bg:'linear-gradient(135deg, #1a4a6b, #2a7f7f)' },
-            { title:'Lunchtime Stretch Break', day:'Thursdays · 12:00 PM', desc:'Ease tension, improve posture, and boost mental clarity — all in under an hour. Perfect midday reset.', url:'https://www.4pointshealth.com/event-details/lunchtime-stretch-break-thursdays-2026-05-21-12-00', cta:'Sign Up', bg:'linear-gradient(135deg, #2a5f4a, #3a9f7f)' },
-          ].map((event) => (
-            <div key={event.title} style={{background:'white', border:'1px solid #e8e4df', borderRadius:'4px', overflow:'hidden'}}>
-              <div style={{height:'160px', background:event.bg, display:'flex', alignItems:'center', justifyContent:'center', position:'relative'}}>
-                <span style={{fontSize:'36px', opacity:0.4}}>🏋️</span>
-                <span style={{position:'absolute', top:'12px', left:'12px', background:'#2a7f7f', color:'white', fontSize:'10px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', padding:'4px 10px', borderRadius:'2px'}}>Weekly</span>
-              </div>
-              <div style={{padding:'20px 22px 22px'}}>
-                <div style={{fontSize:'11px', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase', color:'#2a7f7f', marginBottom:'8px'}}>{event.day}</div>
-                <h3 style={{fontSize:'20px', fontWeight:600, color:'#1a2744', marginBottom:'8px', lineHeight:1.3}}>{event.title}</h3>
-                <p style={{fontSize:'13px', color:'#4a4540', lineHeight:1.6, fontWeight:300, marginBottom:'18px'}}>{event.desc}</p>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid #e8e4df', paddingTop:'14px'}}>
-                  <span style={{fontSize:'12px', color:'#9a9590'}}>📍 4 Points Health</span>
-                  <a href={event.url} style={{background:'#1a2744', color:'white', fontSize:'11px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', padding:'8px 16px', textDecoration:'none', borderRadius:'2px'}}>{event.cta}</a>
+        {/* Weekly Movement Classes */}
+        <div style={{maxWidth:'1200px', margin:'0 auto', padding:'72px 40px 0'}}>
+          <h2 style={{textAlign:'center', fontSize:'clamp(28px, 4vw, 48px)', color:'#4a70a8', fontWeight:600, marginBottom:'20px'}}>Weekly Movement Classes</h2>
+          <p style={{textAlign:'center', fontSize:'15px', color:'#5a5550', lineHeight:1.85, maxWidth:'760px', margin:'0 auto 52px'}}>
+            Join our weekly movement classes at 4 Points Health and Wellness in Edmonton. From high-energy TRX and ConfiDANCE to restorative Lunchtime Stretches, our expert-led sessions are designed for all fitness levels in a supportive community environment.
+          </p>
+
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'24px', marginBottom:'72px'}}>
+            {[
+              {
+                title: 'Lunchtime Stretch Break: Thursdays',
+                day: 'Thu, May 21',
+                location: '4 Points Health and Wellness',
+                desc: 'This class is all about easing tension, improving posture, and boosting mental clarity — all in under an hour.',
+                url: 'https://www.4pointshealth.com/event-details/lunchtime-stretch-break-thursdays-2026-05-21-12-00',
+                cta: 'Sign Up',
+                bg: 'linear-gradient(180deg, rgba(26,39,68,0.45) 0%, rgba(26,39,68,0.92) 55%), linear-gradient(135deg, #2a5f7f 0%, #1a3a5a 100%)',
+              },
+              {
+                title: 'TRX Group Class',
+                day: 'Thu, May 21',
+                location: '4 Points Health and Wellness',
+                desc: 'TRX Group Class with Naissa. Build your strongest, most resilient body using the power of suspension training. Master six foundational movements and progress through dynamic variations...',
+                url: 'https://www.4pointshealth.com/event-details/trx-group-class-2026-05-21-17-30',
+                cta: 'Details',
+                bg: 'linear-gradient(180deg, rgba(20,30,50,0.35) 0%, rgba(20,30,50,0.92) 55%), linear-gradient(135deg, #1a3050 0%, #2a4a70 100%)',
+              },
+              {
+                title: 'TRX Group Class Fridays',
+                day: 'Fri, May 22',
+                location: '4 Points Health and Wellness',
+                desc: 'TRX Group Class with Naissa. Build your strongest, most resilient body using the power of suspension training. Master six foundational movements and progress through dynamic variations...',
+                url: 'https://www.4pointshealth.com/event-details/trx-group-class-fridays-2026-05-22-09-00-1',
+                cta: 'Sign Up',
+                bg: 'linear-gradient(180deg, rgba(20,30,50,0.35) 0%, rgba(20,30,50,0.92) 55%), linear-gradient(135deg, #1a3050 0%, #2a4a70 100%)',
+              },
+            ].map((event) => (
+              <div key={event.title} style={{borderRadius:'8px', overflow:'hidden', background:event.bg, display:'flex', flexDirection:'column', minHeight:'400px', boxShadow:'0 4px 20px rgba(0,0,0,0.15)'}}>
+                <div style={{padding:'16px 18px'}}>
+                  <span style={{background:'rgba(255,255,255,0.18)', color:'white', fontSize:'11px', fontWeight:600, letterSpacing:'0.5px', padding:'5px 14px', borderRadius:'4px', border:'1px solid rgba(255,255,255,0.3)'}}>Multiple Dates</span>
+                </div>
+                <div style={{flex:1}} />
+                <div style={{padding:'22px 26px', color:'white'}}>
+                  <div style={{fontSize:'13px', color:'rgba(255,255,255,0.75)', marginBottom:'4px'}}>{event.day} &nbsp;|&nbsp; {event.location}</div>
+                  <h3 style={{fontSize:'21px', fontWeight:700, marginBottom:'10px', lineHeight:1.3}}>{event.title}</h3>
+                  <p style={{fontSize:'13px', lineHeight:1.65, color:'rgba(255,255,255,0.82)', marginBottom:'20px'}}>{event.desc}</p>
+                  <a href={event.url} style={{display:'inline-block', background:'#4a8fbe', color:'white', fontSize:'14px', fontWeight:600, padding:'10px 30px', borderRadius:'30px', textDecoration:'none'}}>{event.cta}</a>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <hr style={{border:'none', borderTop:'1px solid #e8e4df', margin:'8px 0 48px'}} />
+        {/* Wellness Workshops */}
+        <div style={{maxWidth:'1200px', margin:'0 auto', padding:'0 40px 88px'}}>
+          <h2 style={{textAlign:'center', fontSize:'clamp(28px, 4vw, 48px)', color:'#4a70a8', fontWeight:600, marginBottom:'20px'}}>Wellness Workshops /Immersions</h2>
+          <p style={{textAlign:'center', fontSize:'15px', color:'#5a5550', lineHeight:1.85, maxWidth:'760px', margin:'0 auto 52px'}}>
+            Deepen your healing journey with our specialized wellness workshops. Featuring unique sessions like Yin & Massage and Acupuncture Sound Baths, these 2-hour immersions provide intensive relaxation and physical restoration.
+          </p>
 
-        <div style={{marginBottom:'32px'}}>
-          <div style={{fontSize:'11px', letterSpacing:'3px', textTransform:'uppercase', color:'#2a7f7f', fontWeight:700, marginBottom:'8px'}}>Upcoming · Special Events</div>
-          <h2 style={{fontSize:'30px', fontWeight:600, color:'#1a2744', marginBottom:'6px'}}>Wellness Workshops & Immersions</h2>
-          <p style={{color:'#9a9590', fontSize:'14px', fontWeight:300, lineHeight:1.6}}>Deeper healing experiences featuring specialized sessions for intensive relaxation and restoration.</p>
-        </div>
-
-        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'24px', marginBottom:'56px'}}>
-          <div style={{background:'white', border:'1px solid #e8e4df', borderRadius:'4px', overflow:'hidden'}}>
-            <div style={{height:'160px', background:'linear-gradient(135deg, #1a2744, #c8a951)', display:'flex', alignItems:'center', justifyContent:'center', position:'relative'}}>
-              <span style={{fontSize:'36px', opacity:0.4}}>🎨</span>
-              <span style={{position:'absolute', top:'12px', left:'12px', background:'#c8a951', color:'#1a2744', fontSize:'10px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', padding:'4px 10px', borderRadius:'2px'}}>Special Event</span>
-            </div>
-            <div style={{padding:'20px 22px 22px'}}>
-              <div style={{fontSize:'11px', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase', color:'#2a7f7f', marginBottom:'8px'}}>Saturday, June 6</div>
-              <h3 style={{fontSize:'20px', fontWeight:600, color:'#1a2744', marginBottom:'8px', lineHeight:1.3}}>Ink for Impact</h3>
-              <p style={{fontSize:'13px', color:'#4a4540', lineHeight:1.6, fontWeight:300, marginBottom:'18px'}}>Local tattoo artists and community members — every tattoo supports veterans and first responders. Select your design in advance when booking.</p>
-              <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid #e8e4df', paddingTop:'14px'}}>
-                <span style={{fontSize:'12px', color:'#9a9590'}}>📍 4 Points Health</span>
-                <a href="https://4pointshealth.janeapp.com/locations/ink-4-impact/book#/discipline/32/treatment/747" style={{background:'#1a2744', color:'white', fontSize:'11px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', padding:'8px 16px', textDecoration:'none', borderRadius:'2px'}}>Book Now</a>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'24px'}}>
+            <div style={{borderRadius:'8px', overflow:'hidden', background:'linear-gradient(180deg, rgba(30,20,10,0.3) 0%, rgba(20,14,6,0.92) 55%), linear-gradient(135deg, #5a3a10 0%, #8a6030 100%)', display:'flex', flexDirection:'column', minHeight:'400px', boxShadow:'0 4px 20px rgba(0,0,0,0.15)'}}>
+              <div style={{padding:'16px 18px'}}>
+                <span style={{background:'rgba(200,169,81,0.35)', color:'#f5d98a', fontSize:'11px', fontWeight:600, letterSpacing:'0.5px', padding:'5px 14px', borderRadius:'4px', border:'1px solid rgba(200,169,81,0.5)'}}>Special Event</span>
+              </div>
+              <div style={{flex:1}} />
+              <div style={{padding:'22px 26px', color:'white'}}>
+                <div style={{fontSize:'13px', color:'rgba(255,255,255,0.75)', marginBottom:'4px'}}>Sat, Jun 06 &nbsp;|&nbsp; 4 Points Health and Wellness</div>
+                <h3 style={{fontSize:'21px', fontWeight:700, marginBottom:'10px', lineHeight:1.3}}>Ink for Impact:</h3>
+                <p style={{fontSize:'13px', lineHeight:1.65, color:'rgba(255,255,255,0.82)', marginBottom:'20px'}}>
+                  For one day, we're turning our space into something different. Ink 4 Impact brings together local tattoo artists and community members, with every tattoo supporting veterans and first responders. To participate, book your appointment and select your design in advance.
+                </p>
+                <a href="https://4pointshealth.janeapp.com/locations/ink-4-impact/book#/discipline/32/treatment/747" style={{display:'inline-block', background:'#4a8fbe', color:'white', fontSize:'14px', fontWeight:600, padding:'10px 30px', borderRadius:'30px', textDecoration:'none'}}>Sign Up</a>
               </div>
             </div>
           </div>
@@ -82,45 +117,57 @@ export default function EventsPage() {
 
       </div>
 
-      <footer style={{background:'#1a2744', color:'rgba(255,255,255,0.75)', padding:'52px 40px 32px'}}>
-        <div style={{maxWidth:'1100px', margin:'0 auto', display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'40px', paddingBottom:'40px', borderBottom:'1px solid rgba(255,255,255,0.12)'}}>
+      {/* Footer */}
+      <footer style={{background:'#6b8dbe', color:'white', padding:'60px 48px 32px'}}>
+        <div style={{maxWidth:'1200px', margin:'0 auto', display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'48px', paddingBottom:'48px', borderBottom:'1px solid rgba(255,255,255,0.2)'}}>
           <div>
-            <div style={{marginBottom:'16px'}}>
-              <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'40px', width:'auto', filter:'brightness(0) invert(1)', opacity:0.9}} />
+            <div style={{marginBottom:'20px'}}>
+              <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'44px', width:'auto', filter:'brightness(0) invert(1)', opacity:0.9}} />
             </div>
-            <p style={{fontSize:'13px', lineHeight:1.7, fontWeight:300, marginBottom:'16px', maxWidth:'240px'}}>Your partner in holistic health and wellness in Edmonton, Alberta.</p>
-            <div style={{fontSize:'13px', marginBottom:'6px'}}>11634 142 Street, Suite 110</div>
-            <div style={{fontSize:'13px', marginBottom:'6px'}}>Edmonton, AB &nbsp;T5M 1V4</div>
-            <div style={{fontSize:'13px', marginBottom:'6px'}}><a href="tel:7807055775" style={{color:'#c8a951', textDecoration:'none'}}>780.705.5775</a></div>
-            <div style={{fontSize:'13px'}}><a href="mailto:info@4pointshealth.com" style={{color:'#c8a951', textDecoration:'none'}}>info@4pointshealth.com</a></div>
+            <p style={{fontSize:'14px', lineHeight:1.85, marginBottom:'20px', maxWidth:'240px', color:'rgba(255,255,255,0.85)'}}>Your partner in holistic health and wellness in Edmonton, Alberta. Providing expert care for a balanced life.</p>
+            <div style={{fontSize:'14px', marginBottom:'6px'}}>11634 142 Street, Suite 110</div>
+            <div style={{fontSize:'14px', marginBottom:'6px'}}>Edmonton, AB T5M 1V4</div>
+            <div style={{fontSize:'14px', marginBottom:'6px'}}><a href="tel:7807055775" style={{color:'white', textDecoration:'none'}}>780.705.5775</a></div>
+            <div style={{fontSize:'14px'}}><a href="mailto:info@4pointshealth.com" style={{color:'white', textDecoration:'none'}}>info@4pointshealth.com</a></div>
           </div>
           <div>
-            <h4 style={{color:'white', fontSize:'11px', letterSpacing:'2px', textTransform:'uppercase', fontWeight:700, marginBottom:'16px'}}>Treatments</h4>
-            <ul style={{listStyle:'none'}}>
-              {['Chiropractic', 'Physiotherapy', 'Massage Therapy', 'Acupuncture', 'Athletic Therapy', 'Psychology'].map(item => (
-                <li key={item} style={{marginBottom:'8px'}}><a href={`https://www.4pointshealth.com/wellness-services/${item.toLowerCase().replace(' ','-')}`} style={{color:'rgba(255,255,255,0.65)', textDecoration:'none', fontSize:'13px', fontWeight:300}}>{item}</a></li>
+            <h4 style={{fontSize:'13px', fontWeight:700, letterSpacing:'1px', textTransform:'uppercase', marginBottom:'20px'}}>Quick Links</h4>
+            <ul style={{listStyle:'none', padding:0, margin:0}}>
+              {[
+                ['Home', 'https://www.4pointshealth.com'],
+                ['Treatments', 'https://www.4pointshealth.com/wellness-services'],
+                ['Conditions', 'https://www.4pointshealth.com/back-pain'],
+                ['About', 'https://www.4pointshealth.com/our-story'],
+                ['Events', '/'],
+                ['Contact', 'https://www.4pointshealth.com/contact-3'],
+              ].map(([label, url]) => (
+                <li key={label} style={{marginBottom:'10px'}}>
+                  <a href={url} style={{color:'rgba(255,255,255,0.82)', textDecoration:'none', fontSize:'14px'}}>{label}</a>
+                </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 style={{color:'white', fontSize:'11px', letterSpacing:'2px', textTransform:'uppercase', fontWeight:700, marginBottom:'16px'}}>Conditions</h4>
-            <ul style={{listStyle:'none'}}>
-              {[['Back Pain','back-pain'],['TMJ','tmj'],['Car Accident','treatments/car-accident-treatment'],['Tendinopathy','tendinitis-and-tendinopathy'],['Headache & Neck','headache-and-neck-pain']].map(([label, slug]) => (
-                <li key={label} style={{marginBottom:'8px'}}><a href={`https://www.4pointshealth.com/${slug}`} style={{color:'rgba(255,255,255,0.65)', textDecoration:'none', fontSize:'13px', fontWeight:300}}>{label}</a></li>
-              ))}
-            </ul>
+            <h4 style={{fontSize:'13px', fontWeight:700, letterSpacing:'1px', textTransform:'uppercase', marginBottom:'20px'}}>Contact Us</h4>
+            <div style={{fontSize:'14px', color:'rgba(255,255,255,0.85)', lineHeight:2}}>
+              <div>11634 142 Street</div>
+              <div>Suite 110</div>
+              <div>Edmonton, AB</div>
+              <div style={{marginBottom:'14px'}}>T5M 1V4</div>
+              <div><a href="tel:7807055775" style={{color:'white', textDecoration:'underline'}}>780.705.5775</a></div>
+              <div><a href="mailto:info@4pointshealth.com" style={{color:'white', textDecoration:'underline'}}>info@4pointshealth.com</a></div>
+            </div>
           </div>
           <div>
-            <h4 style={{color:'white', fontSize:'11px', letterSpacing:'2px', textTransform:'uppercase', fontWeight:700, marginBottom:'16px'}}>About</h4>
-            <ul style={{listStyle:'none'}}>
-              {[['Our Story','our-story'],['Meet the Team','meet-the-team'],['FAQ','faq'],['Blog','blog'],['Contact','contact-3']].map(([label, slug]) => (
-                <li key={label} style={{marginBottom:'8px'}}><a href={`https://www.4pointshealth.com/${slug}`} style={{color:'rgba(255,255,255,0.65)', textDecoration:'none', fontSize:'13px', fontWeight:300}}>{label}</a></li>
-              ))}
-            </ul>
+            <h4 style={{fontSize:'13px', fontWeight:700, letterSpacing:'1px', textTransform:'uppercase', marginBottom:'20px'}}>Follow Us</h4>
+            <div style={{display:'flex', gap:'20px', fontSize:'28px'}}>
+              <a href="https://www.instagram.com/4pointshealth/" style={{color:'white', textDecoration:'none'}} aria-label="Instagram">𝕀</a>
+              <a href="https://www.facebook.com/4pointshealth" style={{color:'white', textDecoration:'none'}} aria-label="Facebook">𝔽</a>
+            </div>
           </div>
         </div>
-        <div style={{maxWidth:'1100px', margin:'24px auto 0', display:'flex', justifyContent:'space-between', fontSize:'12px', color:'rgba(255,255,255,0.4)'}}>
-          <span>4 Points Health and Wellness 2024 &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/privacy-policy" style={{color:'rgba(255,255,255,0.4)', textDecoration:'none'}}>Privacy</a></span>
+        <div style={{maxWidth:'1200px', margin:'24px auto 0', display:'flex', justifyContent:'space-between', fontSize:'12px', color:'rgba(255,255,255,0.55)'}}>
+          <span>4 Points Health and Wellness 2024 &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/privacy-policy" style={{color:'rgba(255,255,255,0.55)', textDecoration:'none'}}>Privacy</a> &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/accessibility" style={{color:'rgba(255,255,255,0.55)', textDecoration:'none'}}>Accessibility</a></span>
           <span>events.4pointshealth.com</span>
         </div>
       </footer>
