@@ -7,9 +7,8 @@ export default function EventsPage() {
       </div>
 
       <nav style={{background:'white', borderBottom:'1px solid #e8e4df', padding:'0 40px', display:'flex', alignItems:'center', justifyContent:'space-between', height:'70px', position:'sticky', top:0, zIndex:100, boxShadow:'0 2px 12px rgba(0,0,0,0.07)'}}>
-        <a href="https://www.4pointshealth.com" style={{display:'flex', alignItems:'center', gap:'10px', textDecoration:'none'}}>
-          <div style={{width:'44px', height:'44px', background:'#1a2744', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', color:'white', fontWeight:900, fontSize:'13px'}}>4P</div>
-          <div style={{fontWeight:900, fontSize:'16px', color:'#1a2744', lineHeight:1.2}}>4 Points Health <span style={{display:'block', fontWeight:300, fontSize:'11px', color:'#9a9590', letterSpacing:'2px'}}>& WELLNESS</span></div>
+        <a href="https://www.4pointshealth.com" style={{display:'flex', alignItems:'center', textDecoration:'none'}}>
+          <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'52px', width:'auto'}} />
         </a>
         <div style={{display:'flex', gap:'10px'}}>
           <a href="tel:7807055775" style={{background:'none', border:'2px solid #1a2744', color:'#1a2744', padding:'8px 16px', fontSize:'12px', fontWeight:900, letterSpacing:'1.5px', textTransform:'uppercase', textDecoration:'none'}}>Call Now</a>
@@ -86,9 +85,8 @@ export default function EventsPage() {
       <footer style={{background:'#1a2744', color:'rgba(255,255,255,0.75)', padding:'52px 40px 32px'}}>
         <div style={{maxWidth:'1100px', margin:'0 auto', display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'40px', paddingBottom:'40px', borderBottom:'1px solid rgba(255,255,255,0.12)'}}>
           <div>
-            <div style={{display:'flex', alignItems:'center', gap:'10px', marginBottom:'16px'}}>
-              <div style={{width:'38px', height:'38px', background:'#2a7f7f', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', color:'white', fontWeight:900, fontSize:'12px'}}>4P</div>
-              <div style={{fontWeight:900, color:'white', fontSize:'15px'}}>4 Points Health & Wellness</div>
+            <div style={{marginBottom:'16px'}}>
+              <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style={{height:'40px', width:'auto', filter:'brightness(0) invert(1)', opacity:0.9}} />
             </div>
             <p style={{fontSize:'13px', lineHeight:1.7, fontWeight:300, marginBottom:'16px', maxWidth:'240px'}}>Your partner in holistic health and wellness in Edmonton, Alberta.</p>
             <div style={{fontSize:'13px', marginBottom:'6px'}}>11634 142 Street, Suite 110</div>
