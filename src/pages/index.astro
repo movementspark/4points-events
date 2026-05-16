@@ -8,6 +8,68 @@
     <title>Events | 4 Points Health and Wellness</title>
     <meta name="description" content="Upcoming events, workshops, and weekly movement classes at 4 Points Health and Wellness in Edmonton, Alberta." />
     <link rel="icon" href="/favicon.ico" />
+    <style>
+      /* Treatments dropdown */
+      .nav-dropdown { position: relative; }
+      .dropdown-trigger {
+        background: none; border: none; cursor: pointer;
+        color: #4a4540; font-size: 14px; font-weight: 500;
+        font-family: inherit; padding: 0;
+        display: flex; align-items: center; gap: 4px;
+      }
+      .dropdown-trigger:hover { color: #1a2744; }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+        padding: 28px 32px;
+        min-width: 580px;
+        z-index: 200;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        border-top: 3px solid #1a2744;
+      }
+      .nav-dropdown:hover .dropdown-menu { display: grid; }
+      .dropdown-heading { font-size: 11px; font-weight: 700; color: #1a2744; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+      .dropdown-sub { font-size: 12px; color: #4a70a8; font-style: italic; display: block; margin-bottom: 14px; }
+      .dropdown-menu ul { list-style: none; padding: 0; margin: 0; }
+      .dropdown-menu li { margin-bottom: 10px; }
+      .dropdown-menu a { color: #4a4540; text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+      .dropdown-menu a:hover { color: #1a2744; font-weight: 600; }
+      .dropdown-menu a::before { content: '•'; color: #c8a951; font-size: 12px; flex-shrink: 0; }
+
+      /* Hamburger button */
+      .hamburger-btn {
+        display: none; background: none; border: none;
+        cursor: pointer; padding: 4px; flex-direction: column; gap: 5px;
+      }
+      .hamburger-btn span { display: block; width: 24px; height: 2px; background: #1a2744; }
+
+      /* Mobile nav overlay */
+      .mobile-nav {
+        display: none; position: fixed; inset: 0;
+        background: white; z-index: 500;
+        flex-direction: column; padding: 24px 32px; overflow-y: auto;
+      }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+      .mobile-nav-close { background: none; border: none; font-size: 28px; cursor: pointer; color: #1a2744; line-height: 1; }
+      .mobile-nav > a { display: block; color: #1a2744; font-size: 18px; font-weight: 600; text-decoration: none; padding: 14px 0; border-bottom: 1px solid #e8e4df; }
+      .mobile-section-heading { font-size: 11px; font-weight: 700; color: #4a70a8; letter-spacing: 1px; text-transform: uppercase; padding: 16px 0 8px; }
+      .mobile-sub-links a { display: block; color: #4a4540; font-size: 15px; text-decoration: none; padding: 8px 0 8px 12px; }
+      .mobile-sub-links a:hover { color: #1a2744; }
+      .mobile-book-btn { display: block; background: #1a2744; color: white !important; text-align: center; padding: 14px 28px; border-radius: 30px; font-size: 15px; font-weight: 700; margin-top: 28px; text-decoration: none !important; }
+
+      @media (max-width: 768px) {
+        .hamburger-btn { display: flex; }
+        .desktop-nav { display: none !important; }
+      }
+    </style>
   </head>
   <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
 
@@ -22,14 +84,84 @@
       <a href="https://www.4pointshealth.com" style="display: flex; align-items: center; text-decoration: none;">
         <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style="height: 80px; width: auto;" />
       </a>
-      <div style="display: flex; align-items: center; gap: 32px;">
+
+      <!-- Desktop nav -->
+      <div class="desktop-nav" style="display: flex; align-items: center; gap: 32px;">
         <a href="https://www.4pointshealth.com" style="color: #4a4540; font-size: 14px; text-decoration: none; font-weight: 500;">Home</a>
-        <a href="https://www.4pointshealth.com/wellness-services" style="color: #4a4540; font-size: 14px; text-decoration: none; font-weight: 500;">Treatments</a>
+
+        <!-- Treatments dropdown -->
+        <div class="nav-dropdown">
+          <button class="dropdown-trigger">Treatments ▾</button>
+          <div class="dropdown-menu">
+            <div>
+              <div class="dropdown-heading">Find Relief By Condition</div>
+              <em class="dropdown-sub">I have a specific pain or concern...</em>
+              <ul>
+                <li><a href="https://www.4pointshealth.com/back-pain">Back Pain</a></li>
+                <li><a href="https://www.4pointshealth.com/tmj">TMJ</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments/car-accident-treatment">Car Accident Treatment</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Tendonitis &amp; Tendinopathy</a></li>
+                <li><a href="https://www.4pointshealth.com/headache-and-neck-pain">Headache and Neck Pain</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="dropdown-heading">Our Professional Services</div>
+              <em class="dropdown-sub">I am looking for a specialist...</em>
+              <ul>
+                <li><a href="https://www.4pointshealth.com/treatments">Chiropractic</a></li>
+                <li><a href="https://www.4pointshealth.com/physiotherapy">Physiotherapy</a></li>
+                <li><a href="https://www.4pointshealth.com/massage-therapy">Massage Therapy</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Acupuncture</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Athletic Therapy</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Psychology / Counseling</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Personal Training</a></li>
+                <li><a href="https://www.4pointshealth.com/treatments">Craniosacral Therapy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <a href="https://www.4pointshealth.com/our-story" style="color: #4a4540; font-size: 14px; text-decoration: none; font-weight: 500;">About Us</a>
         <a href="https://www.4pointshealth.com/contact-3" style="color: #4a4540; font-size: 14px; text-decoration: none; font-weight: 500;">Contact</a>
         <a href="tel:7807055775" style="background: #1a2744; color: white; padding: 10px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-decoration: none; border-radius: 30px;">&#9990; CALL NOW</a>
       </div>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger-btn" onclick="document.getElementById('mobile-nav').classList.add('open')" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
+    <!-- Mobile nav overlay -->
+    <div id="mobile-nav" class="mobile-nav">
+      <div class="mobile-nav-header">
+        <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style="height: 50px; width: auto;" />
+        <button class="mobile-nav-close" onclick="document.getElementById('mobile-nav').classList.remove('open')" aria-label="Close menu">&#x2715;</button>
+      </div>
+      <a href="https://www.4pointshealth.com">Home</a>
+      <div class="mobile-section-heading">Find Relief By Condition</div>
+      <div class="mobile-sub-links">
+        <a href="https://www.4pointshealth.com/back-pain">Back Pain</a>
+        <a href="https://www.4pointshealth.com/tmj">TMJ</a>
+        <a href="https://www.4pointshealth.com/treatments/car-accident-treatment">Car Accident Treatment</a>
+        <a href="https://www.4pointshealth.com/treatments">Tendonitis &amp; Tendinopathy</a>
+        <a href="https://www.4pointshealth.com/headache-and-neck-pain">Headache and Neck Pain</a>
+      </div>
+      <div class="mobile-section-heading">Our Professional Services</div>
+      <div class="mobile-sub-links">
+        <a href="https://www.4pointshealth.com/treatments">Chiropractic</a>
+        <a href="https://www.4pointshealth.com/physiotherapy">Physiotherapy</a>
+        <a href="https://www.4pointshealth.com/massage-therapy">Massage Therapy</a>
+        <a href="https://www.4pointshealth.com/treatments">Acupuncture</a>
+        <a href="https://www.4pointshealth.com/treatments">Athletic Therapy</a>
+        <a href="https://www.4pointshealth.com/treatments">Psychology / Counseling</a>
+        <a href="https://www.4pointshealth.com/treatments">Personal Training</a>
+        <a href="https://www.4pointshealth.com/treatments">Craniosacral Therapy</a>
+      </div>
+      <a href="https://www.4pointshealth.com/our-story">About Us</a>
+      <a href="https://www.4pointshealth.com/contact-3">Contact</a>
+      <a href="https://4pointshealth.janeapp.com/" class="mobile-book-btn">Book Today</a>
+    </div>
 
     <!-- Hero — split layout -->
     <div style="display: grid; grid-template-columns: 5fr 7fr; min-height: 380px;">
