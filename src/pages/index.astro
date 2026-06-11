@@ -65,13 +65,91 @@
       .mobile-sub-links a:hover { color: #1a2744; }
       .mobile-book-btn { display: block; background: #1a2744; color: white !important; text-align: center; padding: 14px 28px; border-radius: 30px; font-size: 15px; font-weight: 700; margin-top: 28px; text-decoration: none !important; }
 
+      /* Event cards */
+      .event-card {
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 420px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .event-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+      }
+      .event-card-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(10,20,40,0.82) 60%);
+      }
+      .event-card-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .event-card-badge {
+        padding: 16px 18px;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+        padding: 5px 14px; border-radius: 20px;
+      }
+      .badge-coming-soon {
+        background: rgba(200,169,81,0.9);
+        color: #1a1a00;
+        border: 1px solid rgba(200,169,81,1);
+      }
+      .badge-special {
+        background: rgba(200,169,81,0.35);
+        color: #f5d98a;
+        border: 1px solid rgba(200,169,81,0.5);
+      }
+      .event-card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 22px 26px;
+        color: white;
+      }
+
+      /* Coming soon section */
+      .coming-soon-banner {
+        background: linear-gradient(135deg, #1a2744 0%, #2a4070 100%);
+        border-radius: 16px;
+        padding: 56px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .coming-soon-banner::before {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba(74,143,190,0.15) 0%, transparent 60%),
+                          radial-gradient(circle at 80% 20%, rgba(200,169,81,0.1) 0%, transparent 50%);
+      }
+      .coming-soon-banner > * { position: relative; z-index: 1; }
+
       @media (max-width: 768px) {
         .hamburger-btn { display: flex; }
         .desktop-nav { display: none !important; }
+        .hero-split { grid-template-columns: 1fr !important; }
+        .hero-image-panel { min-height: 280px; }
+        .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+      }
+      @media (max-width: 480px) {
+        .footer-grid { grid-template-columns: 1fr !important; }
       }
     </style>
   </head>
-  <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+  <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff;">
 
     <!-- Announcement bar -->
     <div style="background: #1a2744; color: white; text-align: center; padding: 10px 20px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -164,132 +242,204 @@
     </div>
 
     <!-- Hero — split layout -->
-    <div style="display: grid; grid-template-columns: 5fr 7fr; min-height: 380px;">
-      <div style="background: linear-gradient(135deg, #1a2744 0%, #243560 100%); display: flex; align-items: center; justify-content: center; padding: 40px;">
-        <img src="/4Pointslogo.jpg" alt="" style="width: 220px; filter: brightness(0) invert(1); opacity: 0.15;" />
+    <div class="hero-split" style="display: grid; grid-template-columns: 5fr 7fr; min-height: 440px;">
+      <!-- Left: real photo panel -->
+      <div class="hero-image-panel" style="
+        background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900&auto=format&fit=crop&q=80');
+        background-size: cover;
+        background-position: center 30%;
+        position: relative;
+        min-height: 360px;
+      ">
+        <!-- subtle dark overlay for depth -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,39,68,0.35) 0%, rgba(26,39,68,0.15) 100%);"></div>
       </div>
+
+      <!-- Right: text panel -->
       <div style="background: white; padding: 64px 56px; display: flex; flex-direction: column; justify-content: center;">
-        <h1 style="font-size: clamp(34px, 4vw, 54px); font-weight: 700; color: #1a1a1a; line-height: 1.15; margin-bottom: 20px;">4 Points Community Events</h1>
-        <p style="font-size: 16px; color: #5a5550; line-height: 1.85; font-weight: 300; max-width: 520px;">
-          "Welcome to the 4 Points Community. Our workshops and classes are designed to help you move better, feel stronger, and connect deeper. Browse our upcoming events below and join us in-studio!"
+        <div style="display: inline-block; background: #eef3ff; color: #1a2744; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; width: fit-content;">Edmonton, Alberta</div>
+        <h1 style="font-size: clamp(32px, 3.5vw, 52px); font-weight: 700; color: #1a1a1a; line-height: 1.15; margin: 0 0 20px;">4 Points<br/>Community Events</h1>
+        <p style="font-size: 16px; color: #5a5550; line-height: 1.85; font-weight: 300; max-width: 480px; margin: 0 0 32px;">
+          Our workshops and classes are designed to help you move better, feel stronger, and connect deeper. New events are on the way — follow us to be the first to know.
         </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://www.instagram.com/4pointshealth/" style="background: #1a2744; color: white; padding: 12px 28px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-decoration: none; border-radius: 30px;">Follow Us</a>
+          <a href="https://4pointshealth.janeapp.com/" style="background: white; color: #1a2744; padding: 12px 28px; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 30px; border: 2px solid #1a2744;">Book a Visit</a>
+        </div>
       </div>
     </div>
 
-    <!-- Main content on warm background -->
-    <div style="background: #f0f2f7;">
+    <!-- Main content -->
+    <div style="background: #f5f7fb;">
 
       <!-- Weekly Movement Classes -->
-      <div style="max-width: 1200px; margin: 0 auto; padding: 72px 40px 0;">
-        <h2 style="text-align: center; font-size: clamp(28px, 4vw, 48px); color: #4a70a8; font-weight: 600; margin-bottom: 20px;">Weekly Movement Classes</h2>
-        <p style="text-align: center; font-size: 15px; color: #5a5550; line-height: 1.85; max-width: 760px; margin: 0 auto 52px;">
-          Join our weekly movement classes at 4 Points Health and Wellness in Edmonton. From high-energy TRX and ConfiDANCE to restorative Lunchtime Stretches, our expert-led sessions are designed for all fitness levels in a supportive community environment.
-        </p>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 80px 40px 0;">
+        <div style="text-align: center; margin-bottom: 52px;">
+          <h2 style="font-size: clamp(26px, 3.5vw, 42px); color: #1a2744; font-weight: 700; margin: 0 0 16px;">Weekly Movement Classes</h2>
+          <p style="font-size: 15px; color: #6b6560; line-height: 1.85; max-width: 680px; margin: 0 auto;">
+            From high-energy TRX and ConfiDANCE to restorative Lunchtime Stretches — our expert-led sessions are designed for all fitness levels in a supportive community environment.
+          </p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 72px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 80px;">
 
           <!-- Lunchtime Stretch Break -->
-          <div style="border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, rgba(26,39,68,0.45) 0%, rgba(26,39,68,0.92) 55%), linear-gradient(135deg, #2a5f7f 0%, #1a3a5a 100%); display: flex; flex-direction: column; min-height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-            <div style="padding: 16px 18px;">
-              <span style="background: rgba(255,255,255,0.18); color: white; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 14px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3);">Multiple Dates</span>
-            </div>
-            <div style="flex: 1;"></div>
-            <div style="padding: 22px 26px; color: white;">
-              <div style="font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 4px;">Thu, May 21 &nbsp;|&nbsp; 4 Points Health and Wellness</div>
-              <h3 style="font-size: 21px; font-weight: 700; margin-bottom: 10px; line-height: 1.3;">Lunchtime Stretch Break: Thursdays</h3>
-              <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 20px;">This class is all about easing tension, improving posture, and boosting mental clarity — all in under an hour.</p>
-              <a href="https://www.4pointshealth.com/event-details/lunchtime-stretch-break-thursdays-2026-05-21-12-00" style="display: inline-block; background: #4a8fbe; color: white; font-size: 14px; font-weight: 600; padding: 10px 30px; border-radius: 30px; text-decoration: none;">Sign Up</a>
-            </div>
-          </div>
-
-          <!-- TRX Group Class Thursday -->
-          <div style="border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, rgba(20,30,50,0.35) 0%, rgba(20,30,50,0.92) 55%), linear-gradient(135deg, #1a3050 0%, #2a4a70 100%); display: flex; flex-direction: column; min-height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-            <div style="padding: 16px 18px;">
-              <span style="background: rgba(255,255,255,0.18); color: white; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 14px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3);">Multiple Dates</span>
-            </div>
-            <div style="flex: 1;"></div>
-            <div style="padding: 22px 26px; color: white;">
-              <div style="font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 4px;">Thu, May 21 &nbsp;|&nbsp; 4 Points Health and Wellness</div>
-              <h3 style="font-size: 21px; font-weight: 700; margin-bottom: 10px; line-height: 1.3;">TRX Group Class</h3>
-              <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 20px;">TRX Group Class with Naissa. Build your strongest, most resilient body using the power of suspension training. Master six foundational movements and progress through dynamic variations...</p>
-              <a href="https://www.4pointshealth.com/event-details/trx-group-class-2026-05-21-17-30" style="display: inline-block; background: #4a8fbe; color: white; font-size: 14px; font-weight: 600; padding: 10px 30px; border-radius: 30px; text-decoration: none;">Details</a>
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-coming-soon">Coming Soon</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Thursdays &nbsp;·&nbsp; Lunchtime</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">Lunchtime Stretch Break</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">Ease tension, improve posture, and boost mental clarity — all in under an hour. Perfect for a midday reset.</p>
+                <span style="display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">Notify Me</span>
+              </div>
             </div>
           </div>
 
-          <!-- TRX Group Class Friday -->
-          <div style="border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, rgba(20,30,50,0.35) 0%, rgba(20,30,50,0.92) 55%), linear-gradient(135deg, #1a3050 0%, #2a4a70 100%); display: flex; flex-direction: column; min-height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-            <div style="padding: 16px 18px;">
-              <span style="background: rgba(255,255,255,0.18); color: white; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 14px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3);">Multiple Dates</span>
+          <!-- TRX Thursday -->
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-coming-soon">Coming Soon</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Thursdays &nbsp;·&nbsp; 5:30 PM</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">TRX Group Class</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">With Naissa. Build your strongest, most resilient body using suspension training. All levels welcome.</p>
+                <span style="display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">Notify Me</span>
+              </div>
             </div>
-            <div style="flex: 1;"></div>
-            <div style="padding: 22px 26px; color: white;">
-              <div style="font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 4px;">Fri, May 22 &nbsp;|&nbsp; 4 Points Health and Wellness</div>
-              <h3 style="font-size: 21px; font-weight: 700; margin-bottom: 10px; line-height: 1.3;">TRX Group Class Fridays</h3>
-              <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 20px;">TRX Group Class with Naissa. Build your strongest, most resilient body using the power of suspension training. Master six foundational movements and progress through dynamic variations...</p>
-              <a href="https://www.4pointshealth.com/event-details/trx-group-class-fridays-2026-05-22-09-00-1" style="display: inline-block; background: #4a8fbe; color: white; font-size: 14px; font-weight: 600; padding: 10px 30px; border-radius: 30px; text-decoration: none;">Sign Up</a>
+          </div>
+
+          <!-- TRX Friday -->
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-coming-soon">Coming Soon</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Fridays &nbsp;·&nbsp; 9:00 AM</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">TRX Group Class — Fridays</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">Start your Friday strong. Master foundational movements and progress through dynamic variations with our expert coaches.</p>
+                <span style="display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">Notify Me</span>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- Wellness Workshops & Immersions -->
-      <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px 88px;">
-        <h2 style="text-align: center; font-size: clamp(28px, 4vw, 48px); color: #4a70a8; font-weight: 600; margin-bottom: 20px;">Wellness Workshops / Immersions</h2>
-        <p style="text-align: center; font-size: 15px; color: #5a5550; line-height: 1.85; max-width: 760px; margin: 0 auto 52px;">
-          Deepen your healing journey with our specialized wellness workshops. Featuring unique sessions like Yin &amp; Massage and Acupuncture Sound Baths, these 2-hour immersions provide intensive relaxation and physical restoration.
-        </p>
+      <!-- Wellness Workshops -->
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px 40px;">
+        <div style="text-align: center; margin-bottom: 52px;">
+          <h2 style="font-size: clamp(26px, 3.5vw, 42px); color: #1a2744; font-weight: 700; margin: 0 0 16px;">Wellness Workshops &amp; Immersions</h2>
+          <p style="font-size: 15px; color: #6b6560; line-height: 1.85; max-width: 680px; margin: 0 auto;">
+            Deepen your healing journey with specialized sessions — from Yin &amp; Massage to Acupuncture Sound Baths. These immersions offer intensive relaxation and physical restoration.
+          </p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px;">
 
           <!-- Ink for Impact -->
-          <div style="border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, rgba(30,20,10,0.3) 0%, rgba(20,14,6,0.92) 55%), linear-gradient(135deg, #5a3a10 0%, #8a6030 100%); display: flex; flex-direction: column; min-height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-            <div style="padding: 16px 18px;">
-              <span style="background: rgba(200,169,81,0.35); color: #f5d98a; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 14px; border-radius: 4px; border: 1px solid rgba(200,169,81,0.5);">Special Event</span>
-            </div>
-            <div style="flex: 1;"></div>
-            <div style="padding: 22px 26px; color: white;">
-              <div style="font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 4px;">Sat, Jun 06 &nbsp;|&nbsp; 4 Points Health and Wellness</div>
-              <h3 style="font-size: 21px; font-weight: 700; margin-bottom: 10px; line-height: 1.3;">Ink for Impact:</h3>
-              <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-bottom: 20px;">
-                For one day, we're turning our space into something different. Ink 4 Impact brings together local tattoo artists and community members, with every tattoo supporting veterans and first responders. To participate, book your appointment and select your design in advance.
-              </p>
-              <a href="https://4pointshealth.janeapp.com/locations/ink-4-impact/book#/discipline/32/treatment/747" style="display: inline-block; background: #4a8fbe; color: white; font-size: 14px; font-weight: 600; padding: 10px 30px; border-radius: 30px; text-decoration: none;">Sign Up</a>
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay" style="background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(30,10,0,0.85) 60%);"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-special">Special Event</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">4 Points Health and Wellness</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">Ink for Impact</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">Local tattoo artists unite for a cause — every tattoo supports veterans and first responders. Watch this space for the next date.</p>
+                <span style="display: inline-block; background: rgba(200,169,81,0.25); color: #f5d98a; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(200,169,81,0.5);">Stay Tuned</span>
+              </div>
             </div>
           </div>
 
+          <!-- Yin & Massage placeholder -->
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-coming-soon">Coming Soon</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">2-Hour Immersion</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">Yin &amp; Massage</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">A deeply restorative evening combining yin yoga holds with therapeutic massage — leave feeling completely renewed.</p>
+                <span style="display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">Notify Me</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acupuncture Sound Bath placeholder -->
+          <div class="event-card" style="background-image: url('https://images.unsplash.com/photo-1503891450247-ee5f8ec46dc3?w=700&auto=format&fit=crop&q=80');">
+            <div class="event-card-overlay"></div>
+            <div class="event-card-content">
+              <div class="event-card-badge">
+                <span class="badge badge-coming-soon">Coming Soon</span>
+              </div>
+              <div class="event-card-body">
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">2-Hour Immersion</div>
+                <h3 style="font-size: 22px; font-weight: 700; margin: 0 0 10px; line-height: 1.3;">Acupuncture Sound Bath</h3>
+                <p style="font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0 0 20px;">Experience the meditative power of sound healing paired with acupuncture. A truly unique sensory journey.</p>
+                <span style="display: inline-block; background: rgba(255,255,255,0.15); color: white; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3);">Notify Me</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Coming Soon Banner -->
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px 88px;">
+        <div class="coming-soon-banner">
+          <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #c8a951; margin-bottom: 16px;">New Events on the Way</div>
+          <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: white; margin: 0 0 20px; line-height: 1.2;">Stay Connected with<br/>the 4 Points Community</h2>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.78); max-width: 560px; margin: 0 auto 36px; line-height: 1.8;">
+            We're scheduling our next round of classes and workshops. Follow us on Instagram or reach out directly to be the first to hear when new events are added.
+          </p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.instagram.com/4pointshealth/" style="background: white; color: #1a2744; padding: 14px 36px; font-size: 14px; font-weight: 700; text-decoration: none; border-radius: 30px;">Follow on Instagram</a>
+            <a href="https://www.4pointshealth.com/contact-3" style="background: transparent; color: white; padding: 14px 36px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 30px; border: 2px solid rgba(255,255,255,0.5);">Get in Touch</a>
+          </div>
         </div>
       </div>
 
     </div>
 
     <!-- Footer -->
-    <footer style="background: #6b8dbe; color: white; padding: 60px 48px 32px;">
-      <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <footer style="background: #1a2744; color: white; padding: 60px 48px 32px;">
+      <div class="footer-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.15);">
         <div>
           <div style="margin-bottom: 20px;">
             <img src="/4Pointslogo.jpg" alt="4 Points Health and Wellness" style="height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;" />
           </div>
-          <p style="font-size: 14px; line-height: 1.85; margin-bottom: 20px; max-width: 240px; color: rgba(255,255,255,0.85);">Your partner in holistic health and wellness in Edmonton, Alberta. Providing expert care for a balanced life.</p>
-          <div style="font-size: 14px; margin-bottom: 6px;">11634 142 Street, Suite 110</div>
-          <div style="font-size: 14px; margin-bottom: 6px;">Edmonton, AB T5M 1V4</div>
-          <div style="font-size: 14px; margin-bottom: 6px;"><a href="tel:7807055775" style="color: white; text-decoration: none;">780.705.5775</a></div>
-          <div style="font-size: 14px;"><a href="mailto:info@4pointshealth.com" style="color: white; text-decoration: none;">info@4pointshealth.com</a></div>
+          <p style="font-size: 14px; line-height: 1.85; margin-bottom: 20px; max-width: 240px; color: rgba(255,255,255,0.75);">Your partner in holistic health and wellness in Edmonton, Alberta. Expert care for a balanced life.</p>
+          <div style="font-size: 14px; margin-bottom: 6px; color: rgba(255,255,255,0.8);">11634 142 Street, Suite 110</div>
+          <div style="font-size: 14px; margin-bottom: 6px; color: rgba(255,255,255,0.8);">Edmonton, AB T5M 1V4</div>
+          <div style="font-size: 14px; margin-bottom: 6px;"><a href="tel:7807055775" style="color: rgba(255,255,255,0.8); text-decoration: none;">780.705.5775</a></div>
+          <div style="font-size: 14px;"><a href="mailto:info@4pointshealth.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">info@4pointshealth.com</a></div>
         </div>
         <div>
-          <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;">Quick Links</h4>
+          <h4 style="font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; color: rgba(255,255,255,0.5);">Quick Links</h4>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">Home</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/wellness-services" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">Treatments</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/back-pain" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">Conditions</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/our-story" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">About</a></li>
-            <li style="margin-bottom: 10px;"><a href="/" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">Events</a></li>
-            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/contact-3" style="color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px;">Contact</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">Home</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/wellness-services" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">Treatments</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/back-pain" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">Conditions</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/our-story" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">About</a></li>
+            <li style="margin-bottom: 10px;"><a href="/" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">Events</a></li>
+            <li style="margin-bottom: 10px;"><a href="https://www.4pointshealth.com/contact-3" style="color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px;">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;">Contact Us</h4>
-          <div style="font-size: 14px; color: rgba(255,255,255,0.85); line-height: 2;">
+          <h4 style="font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; color: rgba(255,255,255,0.5);">Contact Us</h4>
+          <div style="font-size: 14px; color: rgba(255,255,255,0.78); line-height: 2;">
             <div>11634 142 Street</div>
             <div>Suite 110</div>
             <div>Edmonton, AB</div>
@@ -299,15 +449,15 @@
           </div>
         </div>
         <div>
-          <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;">Follow Us</h4>
+          <h4 style="font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; color: rgba(255,255,255,0.5);">Follow Us</h4>
           <div style="display: flex; gap: 20px; font-size: 28px;">
             <a href="https://www.instagram.com/4pointshealth/" style="color: white; text-decoration: none;" aria-label="Instagram">&#120128;</a>
             <a href="https://www.facebook.com/4pointshealth" style="color: white; text-decoration: none;" aria-label="Facebook">&#120125;</a>
           </div>
         </div>
       </div>
-      <div style="max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.55);">
-        <span>4 Points Health and Wellness 2024 &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/privacy-policy" style="color: rgba(255,255,255,0.55); text-decoration: none;">Privacy</a> &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/accessibility" style="color: rgba(255,255,255,0.55); text-decoration: none;">Accessibility</a></span>
+      <div style="max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.4); flex-wrap: wrap; gap: 8px;">
+        <span>4 Points Health and Wellness 2026 &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/privacy-policy" style="color: rgba(255,255,255,0.4); text-decoration: none;">Privacy</a> &nbsp;|&nbsp; <a href="https://www.4pointshealth.com/accessibility" style="color: rgba(255,255,255,0.4); text-decoration: none;">Accessibility</a></span>
         <span>events.4pointshealth.com</span>
       </div>
     </footer>
