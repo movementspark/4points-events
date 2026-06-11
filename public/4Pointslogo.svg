@@ -1,0 +1,48 @@
+<svg viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="4 Points Health and Wellness">
+
+  <!-- Compass icon, centered at (36, 36) -->
+  <g transform="translate(36,36)">
+
+    <!-- Outer ring -->
+    <circle r="33" fill="none" stroke="#4a70a8" stroke-width="2.2"/>
+    <!-- Inner ring -->
+    <circle r="24" fill="none" stroke="#4a70a8" stroke-width="0.9"/>
+
+    <!-- Cardinal points: N, E, S, W — elongated diamonds -->
+    <path d="M0,-32 L4.2,-9 L0,-3.5 L-4.2,-9 Z" fill="#8a96aa"/>
+    <path d="M32,0 L9,4.2 L3.5,0 L9,-4.2 Z" fill="#8a96aa"/>
+    <path d="M0,32 L4.2,9 L0,3.5 L-4.2,9 Z" fill="#8a96aa"/>
+    <path d="M-32,0 L-9,4.2 L-3.5,0 L-9,-4.2 Z" fill="#8a96aa"/>
+
+    <!-- Intercardinal points: NE, SE, SW, NW — shorter, lighter, rotated 45° -->
+    <g transform="rotate(45)">
+      <path d="M0,-20 L3,-6 L0,-2 L-3,-6 Z" fill="#c0c9d8"/>
+      <path d="M20,0 L6,3 L2,0 L6,-3 Z" fill="#c0c9d8"/>
+      <path d="M0,20 L3,6 L0,2 L-3,6 Z" fill="#c0c9d8"/>
+      <path d="M-20,0 L-6,3 L-2,0 L-6,-3 Z" fill="#c0c9d8"/>
+    </g>
+
+    <!-- Center dot -->
+    <circle r="4" fill="#4a70a8"/>
+
+  </g>
+
+  <!-- "4 POINTS" -->
+  <text
+    x="86" y="36"
+    font-family="'Arial Black', 'Arial Bold', Arial, 'Helvetica Neue', sans-serif"
+    font-size="27"
+    font-weight="900"
+    fill="#1a2744"
+    letter-spacing="1">4 POINTS</text>
+
+  <!-- "HEALTH AND WELLNESS" -->
+  <text
+    x="88" y="54"
+    font-family="Arial, 'Helvetica Neue', sans-serif"
+    font-size="10.5"
+    font-weight="700"
+    fill="#4a70a8"
+    letter-spacing="3.2">HEALTH AND WELLNESS</text>
+
+</svg>
