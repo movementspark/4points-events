@@ -22,3 +22,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# stale cleanup folder (slow to delete over network mount)
+/_to_delete
