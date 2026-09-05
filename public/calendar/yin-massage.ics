@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//4 Points Health and Wellness//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Edmonton
+X-LIC-LOCATION:America/Edmonton
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0600
+TZNAME:MDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0700
+TZNAME:MST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:yin-massage-2026-09-24@4pointshealth.com
+DTSTAMP:20260905T000000Z
+DTSTART;TZID=America/Edmonton:20260924T183000
+DTEND;TZID=America/Edmonton:20260924T203000
+SUMMARY:Yin & Massage
+DESCRIPTION:2-hour yin yoga and massage session to release tension and eas
+ e stress. Registered Massage Therapists work with each person to help sa
+ fely improve muscular\, neurological\, and joint health. $59. Book: http
+ s://4pointshealth.janeapp.com/#/discipline/14/treatment/406
+LOCATION:4 Points Health and Wellness\, 11634 142 Street NW\, Edmonton\, AB
+  T5M 1V4
+URL:https://4pointshealth.janeapp.com/#/discipline/14/treatment/406
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
