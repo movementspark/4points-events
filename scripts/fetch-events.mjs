@@ -12,7 +12,7 @@ import path from "node:path";
 
 const BASE_ID = "appJM0QU7prjT093v";
 const TABLE_ID = "tbl4CnAJfx5r5VfE5";
-const TOKEN = process.env.AIRTABLE_TOKEN;
+const TOKEN = process.env.AIRTABLE_TOKEN || process.env.Airtable_Token;
 
 const SITE_ORIGIN = "https://events.4pointshealth.com";
 const VENUE_NAME = "4 Points Health and Wellness";
