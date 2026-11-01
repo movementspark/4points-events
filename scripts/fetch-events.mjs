@@ -9,6 +9,7 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { eventTimeCorrection } from "../src/data/event-time-corrections.mjs";
 
 const BASE_ID = "appJM0QU7prjT093v";
 const TABLE_ID = "tbl4CnAJfx5r5VfE5";
@@ -97,6 +98,7 @@ function toIcsDate(isoString) {
 }
 
 function buildIcs({ uid, title, description, startIso, endIso, url }) {
+  const useUtc = Boolean(eventTimeCorrection(uid, startIso));
   const dtstamp =
     new Date()
       .toISOString()
@@ -107,7 +109,7 @@ VERSION:2.0
 PRODID:-//4 Points Health and Wellness//Events//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-BEGIN:VTIMEZONE
+${useUtc ? "" : `BEGIN:VTIMEZONE
 TZID:${TIMEZONE}
 X-LIC-LOCATION:${TIMEZONE}
 BEGIN:DAYLIGHT
@@ -125,11 +127,11 @@ DTSTART:19701101T020000
 RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
-BEGIN:VEVENT
+`}BEGIN:VEVENT
 UID:${uid}@4pointshealth.com
 DTSTAMP:${dtstamp}
-DTSTART;TZID=${TIMEZONE}:${toIcsDate(startIso)}
-DTEND;TZID=${TIMEZONE}:${toIcsDate(endIso)}
+${useUtc ? `DTSTART:${toUtcIcsDate(startIso)}` : `DTSTART;TZID=${TIMEZONE}:${toIcsDate(startIso)}`}
+${useUtc ? `DTEND:${toUtcIcsDate(endIso)}` : `DTEND;TZID=${TIMEZONE}:${toIcsDate(endIso)}`}
 SUMMARY:${icsEscape(title)}
 DESCRIPTION:${icsEscape(description)}
 LOCATION:${icsEscape(VENUE_NAME + ", " + VENUE_ADDRESS)}
@@ -140,12 +142,15 @@ END:VCALENDAR
 `;
 }
 
+function toUtcIcsDate(iso) {
+  return new Date(iso).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
 function googleCalendarUrl({ title, description, startIso, endIso }) {
-  const fmt = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: title,
-    dates: `${fmt(startIso)}/${fmt(endIso)}`,
+    dates: `${toUtcIcsDate(startIso)}/${toUtcIcsDate(endIso)}`,
     details: description,
     location: `${VENUE_NAME}, ${VENUE_ADDRESS}`,
   });
@@ -170,8 +175,9 @@ async function main() {
     if (status !== "Show") continue;
 
     const slug = slugify(title) + "-" + record.id.slice(-6);
-    const startIso = f["Start Date & Time"] || null;
-    const endIso = f["End Date & Time"] || null;
+    const timeCorrection = eventTimeCorrection(slug, f["Start Date & Time"]);
+    const startIso = timeCorrection?.startIso || f["Start Date & Time"] || null;
+    const endIso = timeCorrection?.endIso || f["End Date & Time"] || null;
 
     let imagePath = null;
     const attachments = f["Flyer Image"];

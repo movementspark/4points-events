@@ -1,5 +1,6 @@
 ---
 import eventsData from "../data/events.json";
+import { eventTimeCorrection } from "../data/event-time-corrections.mjs";
 
 const TIMEZONE = "America/Edmonton";
 const SITE_ORIGIN = "https://events.4pointshealth.com";
@@ -28,6 +29,8 @@ const yearFmt = new Intl.DateTimeFormat("en-US", { timeZone: TIMEZONE, year: "nu
 const weekdayFmt = new Intl.DateTimeFormat("en-US", { timeZone: TIMEZONE, weekday: "long" });
 
 function fmtDateLine(ev) {
+  const timeCorrection = eventTimeCorrection(ev.slug, ev.startIso);
+  if (timeCorrection) return timeCorrection.dateLine;
   if (!ev.startIso) return null;
   const start = new Date(ev.startIso);
   const end = ev.endIso ? new Date(ev.endIso) : null;
